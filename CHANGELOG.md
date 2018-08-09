@@ -1,3 +1,6 @@
+## Release 1.1.1
+* Add features to allow multiple hostkeys and AcceptEnv configuration lines
+
 ## Release 1.1.0
 
 * cc19ee3 [feature] support FreeBSD 11.1 and OpenBSD 6.[12] (#17)

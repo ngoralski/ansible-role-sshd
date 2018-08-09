@@ -1,7 +1,18 @@
 # Managed by ansible
+
 {{ sshd_config_pre }}
 {% for k, v in sshd_config | dictsort(true) if not (k == 'UsePAM' and ansible_os_family == 'OpenBSD') %}
+{% if k == 'HostKey' %}
+{% for v2 in v %}
+HostKey {{ v2 }}
+{% endfor %}
+{% elif k == 'AcceptEnv' %}
+{% for v2 in v %}
+AcceptEnv {{ v2 }}
+{% endfor %}
+{% else %}
 {{ k }} {{ v }}
+{% endif %}
 {% endfor %}
 {{ sshd_config_post }}
 {% for m in sshd_config_match %}
